@@ -75,9 +75,9 @@ public class SecurityFacade {
 		return SecurityUtils.getSecurityManager();
 	}
 
-	@Produces
+	@Produces @SessionScoped
 	public Subject getSubject() {
-		return SecurityUtils.getSubject();
+		return new SafeSubject(SecurityUtils.getSubject());
 	}
 
 	@Produces @SessionScoped
